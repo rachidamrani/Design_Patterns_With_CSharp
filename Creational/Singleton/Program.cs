@@ -1,12 +1,22 @@
-﻿sealed class Singleton
+﻿ParallelEnumerable.Range(0, 1000).ForAll(_ =>
 {
-    private static readonly Lazy<Singleton> _lazySingleton = new Lazy<Singleton>(() => new Singleton());
+    Singleton singleton = Singleton.Instance;
+});
 
-    public static Singleton Instance => _lazySingleton.Value;
+sealed class Singleton
+{
 
-
-    private Singleton()
+    public static Singleton Instance => Nested.Instance;
+    private class Nested
     {
-        Console.WriteLine("Instantiating Singleton ...");
+        internal static Singleton Instance { get; } = new();
+        static Nested() { }
+    }
+
+    private Singleton() { }
+
+    static Singleton()
+    {
+        Console.WriteLine("Instantiation Singleton..");
     }
 }
