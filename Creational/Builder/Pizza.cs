@@ -10,9 +10,12 @@ public record Pizza(Dough Dough, string Sauce, string Cheese, List<string> Toppi
         private string _cheese = string.Empty;
         private List<string> _toppings = [];
 
-        public Builder SetDough(Dough dough)
+        public Builder SetDough(Action<Dough.Builder> buildDoughAction)
         {
-            _dough = dough;
+            var doughBuilder = new Dough.Builder();
+            buildDoughAction(doughBuilder);
+            _dough = doughBuilder.Build();
+
             return this;
         }
 

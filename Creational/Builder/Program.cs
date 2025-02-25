@@ -2,14 +2,10 @@
 
 Console.WriteLine("---Builder Design Pattern---");
 
-Dough dough = new Dough.Builder()
-                .SetThickness(3)
-                .SetFlour("Whole wheat")
-                .Build();
-
-
 Pizza pizza = new Pizza.Builder()
-                .SetDough(dough)
+                .SetDough(dough => dough
+                        .SetThickness(3)
+                        .SetFlour("whole wheat"))
                 .SetSauce("Spicy tomato sauce")
                 .SetCheese("Vegan cheese")
                 .AddTopping("Olives")

@@ -5,7 +5,7 @@ public record Dough(int Thickness, string Flour)
     public class Builder
     {
         private int _thickness;
-        private string _flour;
+        private string _flour = string.Empty;
 
         public Builder SetThickness(int thickness)
         {
