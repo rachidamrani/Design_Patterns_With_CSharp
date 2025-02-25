@@ -1,18 +1,9 @@
-﻿// Many singletons would be created by each thread, which is also illegal!
-ParallelEnumerable.Range(0, 10000)
+﻿ParallelEnumerable.Range(0, 10000)
 .ForAll(_ =>
 {
     Singleton singleton = Singleton.Instance;
 });
 
-
-// Console.WriteLine("Before accessing instance");
-
-// Singleton singleton1 = Singleton.Instance;
-
-// Console.WriteLine("After accessing instance");
-
-// Singleton singleton2 = Singleton.Instance; // Should be illegal
 
 sealed class Singleton
 {
