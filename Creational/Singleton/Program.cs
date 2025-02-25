@@ -8,25 +8,10 @@
 sealed class Singleton
 {
     private static Singleton _instance = default!;
-    private static object _lock = new();
-    public static Singleton Instance
-    {
-        get
-        {
-            if (_instance is null)
-            {
-                lock (_lock)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new Singleton();
-                    }
-                }
-            }
+    private static readonly Lazy<Singleton> _lazySingleton = new Lazy<Singleton>(() => new Singleton());
 
-            return _instance;
-        }
-    }
+    public static Singleton Instance => _lazySingleton.Value;
+
 
     private Singleton()
     {
