@@ -2,11 +2,18 @@
 
 Console.WriteLine("---Builder Design Pattern---");
 
-Product.Builder builder = new Product.Builder();
+Dough dough = new Dough.Builder()
+                .SetThickness(3)
+                .SetFlour("Whole wheat")
+                .Build();
 
-Product product = builder
-                    .SetName("Simple product")
-                    .SetDescription("Product Description")
-                    .Build();
 
-Console.WriteLine(product);
+Pizza pizza = new Pizza.Builder()
+                .SetDough(dough)
+                .SetSauce("Spicy tomato sauce")
+                .SetCheese("Vegan cheese")
+                .AddTopping("Olives")
+                .AddTopping("Onions")
+                .Build();
+
+Console.WriteLine(pizza);
