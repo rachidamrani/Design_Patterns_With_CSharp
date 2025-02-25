@@ -1,9 +1,4 @@
-﻿ParallelEnumerable.Range(0, 1000).ForAll(_ =>
-{
-    Singleton singleton = Singleton.Instance;
-});
-
-sealed class Singleton
+﻿sealed class Singleton
 {
 
     public static Singleton Instance => Nested.Instance;
