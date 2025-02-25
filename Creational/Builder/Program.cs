@@ -2,11 +2,11 @@
 
 Console.WriteLine("---Builder Design Pattern---");
 
-Product.Builder builder = new();
+Product.Builder builder = new Product.Builder();
 
-builder.BuildName("Simple product");
-builder.BuildDescription("Product description");
-
-Product product = builder.Build();
+Product product = builder
+                    .SetName("Simple product")
+                    .SetDescription("Product Description")
+                    .Build();
 
 Console.WriteLine(product);

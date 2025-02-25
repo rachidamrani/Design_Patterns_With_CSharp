@@ -8,13 +8,15 @@ public record Product(string Name, string Description)
         private string _name = string.Empty;
         private string _description = string.Empty;
 
-        public void BuildName(string name)
+        public Builder SetName(string name)
         {
             _name = name;
+            return this;
         }
-        public void BuildDescription(string description)
+        public Builder SetDescription(string description)
         {
             _description = description;
+            return this;
         }
 
         public Product Build()
