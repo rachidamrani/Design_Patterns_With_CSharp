@@ -1,10 +1,16 @@
 namespace Builder;
 
-public class ProductDirector(IBuilder builder)
+public class ProductDirector
 {
+    private readonly IBuilder _builder;
+
+    public ProductDirector(IBuilder builder)
+    {
+        _builder = builder;
+    }
     public void ConstructProduct()
     {
-        builder.BuildName();
-        builder.BuildDescription();
+        _builder.BuildName();
+        _builder.BuildDescription();
     }
 }

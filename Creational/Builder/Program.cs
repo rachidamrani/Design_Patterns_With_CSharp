@@ -2,7 +2,7 @@
 
 Console.WriteLine("---Builder Design Pattern---");
 
-IBuilder builder = new SimpleProductBuilder();
+IBuilder builder = new ComplexProductBuilder(); // can be injected by dependency injection
 ProductDirector director = new ProductDirector(builder);
 
 director.ConstructProduct();
